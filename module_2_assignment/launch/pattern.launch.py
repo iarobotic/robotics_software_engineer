@@ -22,7 +22,7 @@ def generate_launch_description():
         name='pattern',
         parameters=[
             {'radius': 0.9},
-            {'pattern': 'circle'},
+            {'pattern': 'spiral'},
         ]
     )
 

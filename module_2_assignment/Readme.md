@@ -1,42 +1,53 @@
- # Module 2 Assignment: Developing Custom ROS 2 Nodes and Launch Files
 
-## How to tun this
+# Module 2 Assignment: Developing Custom ROS 2 Nodes and Launch Files
 
- ros2 launch module_2_assignment pattern.launch.py
- ros2 launch module_2_assignment 5_turtlesim.launch.py
- ros2 param set /move_turtle1 velocity 4.0
+## How to Run This
 
+### Task 1: Pattern Movement
+To launch the pattern movement (circle or spiral), use the following command:
+```bash
+ros2 launch module_2_assignment pattern.launch.py
+```
+![Task 1a: Circle Movement](task1a.gif)  
+![Task 1b: Logarithmic Spiral Movement](task1b.gif)
 
-## My understanding Tasks
+### Task 2: Spawning 5 Turtlebots
+To launch the simulation with 5 turtles, use:
+```bash
+ros2 launch module_2_assignment 5_turtlesim.launch.py
+```
+![Task 3: Spawn and Move Turtles](task3.gif)
+
+### Task 3: Modify Turtle Speed
+To dynamically change the turtle's speed, set the `velocity` parameter:
+```bash
+ros2 param set /move_turtle1 velocity 4.0
+```
+![Task 4: Change Speed Dynamically](task4.gif)
+
+---
+
+## My Understanding of the Tasks
 
 ### Task 1: Create a Custom ROS 2 Node
+- **Develop a ROS 2 Node**  
+  - **Circle Movement:** Generate a circular motion.  
+  - **Logarithmic Spiral Movement:** Generate a logarithmic spiral motion.
 
-- **Develop a ROS 2 node** 
-  - **Circle Movement:** 
-  - **Logarithmic Spiral Movement:**
-
-  I create a patter_node node that allows generating a circle or spiral pattern that can be selected using a parameter. With another additional parameter for the radius.
+  I created a `pattern_node` that allows generating either a circle or a spiral pattern, selectable using a parameter. An additional parameter controls the radius of the movement.
 
 ### Task 2: Develop a Launch File
-
-- **Create a launch file** 
-
-- **Ensure proper documentation** 
+- **Create a Launch File:**  
+  The launch file initializes the `pattern_node` with the appropriate parameters for the desired movement.
 
 ### Task 3: Modify the Turtlesim Simulation Environment
-
-- **Use existing Turtlesim services**
-  - **Spawn 5 Turtlebots** 
-  I create a launch file where the turtlesim are generated in certain positions with the /spawn' service.
-
-  - **Drive the middle 3 turtles** 
-  I create a move_turtle node that allows me to move the turtlesim back and forth. It has a parameter for the '/cmd_vel' topic so that velocities can be published independently.
+- **Use Existing Turtlesim Services:**  
+  - **Spawn 5 Turtlebots:**  
+    I created a launch file to spawn five turtles at specified positions using the `/spawn` service.  
+  - **Drive the Middle 3 Turtles:**  
+    I developed a `move_turtle` node that moves the turtles back and forth. It accepts a parameter for the `/cmd_vel` topic, enabling independent velocity publication for each turtle.
 
 ### Task 4: Modify Turtle Behavior with Parameters
-
-- **Utilize ROS 2 parameters** 
-  - **Change the speed** 
-  
-I create a velocity parameter that I assign to linear.x. I change this parameter dynamically with the command 'ros2 param set'.
-
-
+- **Utilize ROS 2 Parameters:**  
+  - **Change the Speed Dynamically:**  
+    I implemented a `velocity` parameter for `linear.x` that can be dynamically updated using the `ros2 param set` command.
