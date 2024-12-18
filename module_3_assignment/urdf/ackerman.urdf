@@ -1,0 +1,246 @@
+<?xml version="1.0"?>
+<robot name="ackerman_robot">
+    <!-- Material Definitions -->
+    <material name="blue">
+        <color rgba="0 0 0.8 1"/>
+    </material>
+    <material name="black">
+        <color rgba="0.1 0.1 0.1 1"/>
+    </material>
+    <material name="red">
+        <color rgba="0.8 0 0 1"/>
+    </material>
+    <material name="gray">
+        <color rgba="0.5 0.5 0.5 1"/>
+    </material>
+
+    <!-- Base Link (Chassis) -->
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="2.0 1.0 0.5"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="2.0 1.0 0.5"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="100.0"/>
+            <inertia ixx="16.66" ixy="0.0" ixz="0.0"
+                     iyy="83.33" iyz="0.0"
+                     izz="91.66"/>
+        </inertial>
+    </link>
+
+    <!-- Steering Hub Links -->
+    <!-- Left Side -->
+    <link name="left_steering_hub">
+        <visual>
+            <geometry>
+                <box size="0.2 0.1 0.1"/>
+            </geometry>
+            <material name="gray"/>
+        </visual>
+        <inertial>
+            <mass value="1.0"/>
+            <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                     iyy="0.001" iyz="0.0"
+                     izz="0.001"/>
+        </inertial>
+    </link>
+
+    <!-- Right Side -->
+    <link name="right_steering_hub">
+        <visual>
+            <geometry>
+                <box size="0.2 0.1 0.1"/>
+            </geometry>
+            <material name="gray"/>
+        </visual>
+        <inertial>
+            <mass value="1.0"/>
+            <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                     iyy="0.001" iyz="0.0"
+                     izz="0.001"/>
+        </inertial>
+    </link>
+
+    <!-- Front Left Steering Link -->
+    <link name="front_left_steering">
+        <visual>
+            <geometry>
+                <cylinder radius="0.05" length="0.15"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+        <inertial>
+            <mass value="1.0"/>
+            <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                     iyy="0.001" iyz="0.0"
+                     izz="0.001"/>
+        </inertial>
+    </link>
+
+    <!-- Front Right Steering Link -->
+    <link name="front_right_steering">
+        <visual>
+            <geometry>
+                <cylinder radius="0.05" length="0.15"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+        <inertial>
+            <mass value="1.0"/>
+            <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                     iyy="0.001" iyz="0.0"
+                     izz="0.001"/>
+        </inertial>
+    </link>
+
+    <!-- Wheels -->
+    <link name="front_left_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="0.3" length="0.1"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.3" length="0.1"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="5.0"/>
+            <inertia ixx="0.1" ixy="0.0" ixz="0.0"
+                     iyy="0.1" iyz="0.0"
+                     izz="0.1"/>
+        </inertial>
+    </link>
+
+    <link name="front_right_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="0.3" length="0.1"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.3" length="0.1"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="5.0"/>
+            <inertia ixx="0.1" ixy="0.0" ixz="0.0"
+                     iyy="0.1" iyz="0.0"
+                     izz="0.1"/>
+        </inertial>
+    </link>
+
+    <link name="rear_left_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="0.3" length="0.1"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.3" length="0.1"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="5.0"/>
+            <inertia ixx="0.1" ixy="0.0" ixz="0.0"
+                     iyy="0.1" iyz="0.0"
+                     izz="0.1"/>
+        </inertial>
+    </link>
+
+    <link name="rear_right_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="0.3" length="0.1"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.3" length="0.1"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="5.0"/>
+            <inertia ixx="0.1" ixy="0.0" ixz="0.0"
+                     iyy="0.1" iyz="0.0"
+                     izz="0.1"/>
+        </inertial>
+    </link>
+
+    <!-- Hub Joints -->
+    <joint name="left_hub_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="left_steering_hub"/>
+        <origin xyz="0.8 0.5 -0.2" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="right_hub_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="right_steering_hub"/>
+        <origin xyz="0.8 -0.5 -0.2" rpy="0 0 0"/>
+    </joint>
+
+    <!-- Steering Joints -->
+    <!-- Main steering joint (left) -->
+    <joint name="front_left_steering_joint" type="revolute">
+        <parent link="left_steering_hub"/>
+        <child link="front_left_steering"/>
+        <origin xyz="0.1 0 0" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-1.0" upper="1.0" effort="10.0" velocity="2.0"/>
+    </joint>
+
+    <!-- Mimic joint for right steering -->
+    <joint name="front_right_steering_joint" type="revolute">
+        <parent link="right_steering_hub"/>
+        <child link="front_right_steering"/>
+        <origin xyz="0.1 0 0" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-1.0" upper="1.0" effort="10.0" velocity="2.0"/>
+        <mimic joint="front_left_steering_joint" multiplier="1" offset="0"/>
+    </joint>
+
+    <!-- Wheel Joints -->
+    <joint name="front_left_wheel_joint" type="continuous">
+        <parent link="front_left_steering"/>
+        <child link="front_left_wheel"/>
+        <origin xyz="0 0.1 0" rpy="1.5708 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <joint name="front_right_wheel_joint" type="continuous">
+        <parent link="front_right_steering"/>
+        <child link="front_right_wheel"/>
+        <origin xyz="0 -0.1 0" rpy="1.5708 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <joint name="rear_left_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="rear_left_wheel"/>
+        <origin xyz="-0.8 0.5 -0.2" rpy="1.5708 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <joint name="rear_right_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="rear_right_wheel"/>
+        <origin xyz="-0.8 -0.5 -0.2" rpy="1.5708 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+</robot>

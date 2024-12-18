@@ -7,9 +7,21 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
+
+# new lines ->
+find_package(rclcpp REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(robot_state_publisher REQUIRED)
+
+#add_executable(static_transform src/static_transform.cpp)
+#ament_target_dependencies(static_transform rclcpp tf2_ros geometry_msgs)
+
+
+install(DIRECTORY launch urdf config
+  DESTINATION share/${PROJECT_NAME}
+)
+# <- new lines
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

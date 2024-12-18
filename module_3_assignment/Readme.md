@@ -12,6 +12,12 @@ This assignment focuses on understanding and applying the concepts of URDF (Unif
   - **Define the transform tree** for the robotic arm without including any visualization tags. Focus solely on creating the correct transforms for the arm's joints.
   - **Do not include any visual elements** at this stage—only the transforms should be defined.
 
+ ### Solution: 
+ ```bash
+  ros2 launch module_3_assignment robot_arm1.launch.py
+ ```  
+![Task 1: ](assig3_task1.gif)
+
 ### Task 2: Add Joints and Visual Elements
 
 - **Enhance the robotic arm** you created earlier by adding joints:
@@ -20,6 +26,11 @@ This assignment focuses on understanding and applying the concepts of URDF (Unif
   - **All Other Joints:** Set these as revolute joints.
 
 - **Add visualization tags** to your robot's URDF to create the body, primarily using cylinder shapes for simplicity.
+ ### Solution: 
+ ```bash
+  ros2 launch module_3_assignment robot_arm2.launch.py
+ ``` 
+ ![Task 2: ](assig3_task2.gif)
 
 ### Task 3: Build a Mobile Manipulator
 
@@ -27,30 +38,37 @@ This assignment focuses on understanding and applying the concepts of URDF (Unif
   - **Place the robotic arm** on top of a differential drive robot.
   - **Connect the arm** using the `base_link` of the differential drive robot.
 
+ ### Solution: 
+ ```bash
+  ros2 launch module_3_assignment robot_wheeled_arm.launch.py
+ ``` 
+![Task 3: ](assig3_task3_1.gif)
+
 - **Create an Ackerman Drive System:**
   - **Design a car-like robot structure** that represents the front axle rotations for turning, simulating an Ackerman steering mechanism.
 
-## Learning Outcome
+ ### Solution: 
+ ```bash
+  ros2 launch module_3_assignment ackerman.launch.py
+ ``` 
+ ![Task 3: ](assig3_task3_2.gif)
 
-By completing this assignment, you will:
-- Learn to create custom robots for simulations using URDF.
-- Understand how to define and manipulate joints and transforms in URDF.
-- Gain experience in building and simulating mobile manipulators and drive systems in ROS 2.
-----
-## Submission Process
+### Task 4: Debugging Task - Fixing an Incorrect URDF for a Wheeled Robot with a Lifting Mechanism
+`Task Description:`
 
-1. **Create Files:**
-   - Navigate to the `module_3_assignment` package.
-   - Create the required URDF files to implement the tasks, including the robotic arm and mobile manipulator designs.
+This debugging task introduces a wheeled robot equipped with a lifting mechanism for carrying payloads. The provided URDF has several issues related to joint types, incorrect transforms, and missing elements. Your task is to debug the URDF and ensure the robot's model is valid and functional.
 
-2. **Document Your Work:**
-   - Create a `README.md` file in the `module_3_assignment` package.
-   - Provide details about the files you created, including explanations of the URDF structure and the commands needed to visualize your robots in ROS 2.
+`Instructions:`
 
-3. **Submit Your Assignment:**
-   - Push your changes to your forked repository.
-   - Provide your repository link in the assignment submission text area.
-   - **Note**: Ensure you press the "Start Assignment" button when you see the page (as it takes time to generate the pages).
+- Identify and fix the errors in the URDF file.
+- Verify that the lifting mechanism operates with the correct prismatic joint and range.
+- Ensure the wheels are configured correctly to enable a differential drive system.
+- Validate the corrected URDF using a ROS 2 launch file that spawns the robot in a simulated environment.
 
-4. **Wait for Review:**
-   - Wait for the instructors to review your submission.
+ ### Solution: 
+ ```bash
+  ros2 launch module_3_assignment robot_lift_debug.launch.py
+ ``` 
+![Task 4: ](assig3_task4.gif)
+
+
