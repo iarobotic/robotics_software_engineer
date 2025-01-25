@@ -36,7 +36,9 @@ This assignment is focused on utilizing sensor data to control robots effectivel
   ros2 launch module_4_assignment square.launch.py
  ```  
 ![Task 3: ](tb3_maze_vel.gif)  
-![Extra:] (line_following_test.gif)  
+![Extra: ](line_following_test.gif)  
+
+
 
 ### Task 4: Fix Errors in Launch Files
 - Successfully run the **robot_sensing_debug** packge by removing errors and
